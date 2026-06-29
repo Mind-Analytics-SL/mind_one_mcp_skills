@@ -1,16 +1,16 @@
 ---
-description: Insert or replace data in a Mind One datagrid. Use when the user wants to load, upload, add rows, or update data in a datagrid.
+description: Insert or replace data in a Mind One governed sheet (datagrid). Use when the user wants to load, upload, add rows, or update data in a governed sheet.
 disable-model-invocation: true
 argument-hint: [datagrid name or description]
 ---
 
-Import data into a Mind One datagrid. Target: `$ARGUMENTS`
+Import data into a Mind One governed sheet. Target: `$ARGUMENTS`
 
-## Step 1 — Identify the target datagrid
+## Step 1 — Identify the target governed sheet
 
-- If `$ARGUMENTS` names a datagrid, call `mindone_search_datagrids` to find it.
+- If `$ARGUMENTS` names a governed sheet, call `mindone_search_datagrids` to find it.
 - If ambiguous or not found, call `mindone_list_workspaces` → `mindone_list_datagroups` → `mindone_list_datagrids` to let the user pick.
-- Confirm the target datagrid with the user before proceeding.
+- Confirm the target governed sheet with the user before proceeding.
 
 ## Step 2 — Inspect the schema
 
@@ -22,7 +22,7 @@ If the user has not yet provided data, ask them to share it (CSV, JSON array, ma
 
 ## Step 4 — Map columns to fields
 
-Map the user's columns to datagrid fields:
+Map the user's columns to governed sheet fields:
 - Match by name first (case-insensitive).
 - For ambiguous columns, ask the user to confirm the mapping.
 - Skip columns that have no matching field — do not invent mappings.
