@@ -44,3 +44,12 @@ Map the user's columns to governed sheet fields:
 - For async operations, poll `mindone_get_job_status` until complete.
 - Report how many rows were inserted, updated, or replaced.
 - If there are errors, show which rows failed and why.
+
+## Step 7 — Offer to approve
+
+Any row write leaves the governed sheet in **draft**: the new data does not reach the data
+warehouse until the sheet is approved again. Once every job has `succeeded`, ask the user
+whether to approve it now. If yes, call `mindone_approve_datagrid` (optionally with a
+`comment`): the first call returns a preview and a `confirmToken`; show the preview and only
+call again with the token after the user confirms. Report the resulting `sync_status`. Never
+approve while a job is still running — the API rejects it with 409.
