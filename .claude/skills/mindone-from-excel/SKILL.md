@@ -114,5 +114,9 @@ Report a structured summary:
   and offer to fix and re-insert them.
 - If any step was blocked by a tier/permission limit, state which step and what the user can do.
 
+The new sheet is in **draft** until approved, and only approved data syncs to the data
+warehouse. Offer to approve it with `mindone_approve_datagrid` (two-step: preview +
+`confirmToken`, then the confirmed call) once all insert jobs have `succeeded`.
+
 Then offer next actions: explore the new structure (`/mindone-explore`), add more data
 (`/mindone-import`), or set up another sheet from the same workbook.
